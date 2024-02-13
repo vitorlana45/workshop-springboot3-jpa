@@ -12,7 +12,6 @@ import java.util.Objects;
 
 @Embeddable //é uma maneira de modelar objetos que fazem parte de outros objetos maiores, em vez de serem entidades por si só.
 public class OrderItemPk implements Serializable {
-
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -39,6 +38,8 @@ public class OrderItemPk implements Serializable {
     public void setProduct(Product product) {
         this.product = product;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
