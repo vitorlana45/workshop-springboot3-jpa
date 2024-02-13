@@ -1,6 +1,7 @@
 package com.project.lana.course.resources;
 
 import com.project.lana.course.Service.UserService;
+
 import com.project.lana.course.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping(value = "/users") // request mapping
