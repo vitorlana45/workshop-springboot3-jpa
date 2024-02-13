@@ -1,6 +1,5 @@
 package com.project.lana.course.entities;
 
-import com.project.lana.course.resources.CategoryResource;
 import jakarta.persistence.*;
 
 import java.io.Serial;
