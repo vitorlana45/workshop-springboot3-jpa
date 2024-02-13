@@ -1,10 +1,12 @@
 package com.project.lana.course.config;
 
 
+import com.project.lana.course.entities.Category;
 import com.project.lana.course.entities.Order;
 import com.project.lana.course.entities.User;
 
 import com.project.lana.course.entities.enums.OrderStatus;
+import com.project.lana.course.repositories.CategoryRepository;
 import com.project.lana.course.repositories.OrderRepository;
 import com.project.lana.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,24 +23,32 @@ public class TestConfig implements CommandLineRunner {
     @Autowired // fazendo uma injeção de dependencia
     private UserRepository userRepository;
 
-
+    @Autowired
+    private CategoryRepository categoryRepository;
     @Autowired
     private OrderRepository orderRepository;
 
     @Override
     public void run(String... args) throws Exception {
-    // tudo que colocar dentro do metodo run será executado quando minha aplicação for executada
+        // tudo que colocar dentro do metodo run será executado quando minha aplicação for executada
 
-        User u1 = new User (null,"Maria Brown", "maria@gmail.com", "988888888", "123456");
+        Category cat1 = new Category(null, "Electronics");
+        Category cat2 = new Category(null, "Books");
+        Category cat3 = new Category(null, "Computers");
+
+        categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+
+        User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
         User u2 = new User(null, "Alex Green", "alex@gmail.com", "977777777", "123456");
 
         Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, u1);
         Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, u2);
-        Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"),OrderStatus.WAITING_PAYMENT, u1);
+        Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT, u1);
 
 
-        userRepository.saveAll(Arrays.asList(u1,u2));
-        orderRepository.saveAll(Arrays.asList(o1,o2,o3));
+        userRepository.saveAll(Arrays.asList(u1, u2));
+        orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 
-        }
+
+    }
 }
