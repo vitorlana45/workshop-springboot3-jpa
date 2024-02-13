@@ -45,7 +45,7 @@ public class TestConfig implements CommandLineRunner {
         Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
 
         categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
-        productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+        productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 
         p1.getCategories().add(cat2);
         p2.getCategories().add(cat1);
@@ -54,7 +54,7 @@ public class TestConfig implements CommandLineRunner {
         p4.getCategories().add(cat3);
         p5.getCategories().add(cat2);
 
-        productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+        productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 
         User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
         User u2 = new User(null, "Alex Green", "alex@gmail.com", "977777777", "123456");
@@ -74,7 +74,8 @@ public class TestConfig implements CommandLineRunner {
 
         orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 
-
-
+        Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+        o1.setPayment(pay1); // Associacao de mao dupla // pego meu OrderItem -> Order -> dentro dele tem uma Injecao Payment
+        orderRepository.save(o1);
     }
 }
