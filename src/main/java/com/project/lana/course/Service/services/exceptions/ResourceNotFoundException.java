@@ -2,13 +2,12 @@ package com.project.lana.course.Service.services.exceptions;
 
 import java.io.Serial;
 
-public class ResourceNotFoundException extends RuntimeException{
+public class ResourceNotFoundException extends RuntimeException {
 
     @Serial
-    private static final long serialVersionUID= 1L;
+    private static final long serialVersionUID = 1L;
 
-    public ResourceNotFoundException (Object id){
+    public ResourceNotFoundException(Object id) {
         super("Resource not found. Id " + id);
     }
-
 }
