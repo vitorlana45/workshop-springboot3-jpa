@@ -39,8 +39,6 @@ public class OrderItemPk implements Serializable {
         this.product = product;
     }
 
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
