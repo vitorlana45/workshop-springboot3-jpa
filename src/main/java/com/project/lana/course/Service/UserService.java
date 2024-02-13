@@ -1,10 +1,12 @@
 package com.project.lana.course.Service;
 
+import com.project.lana.course.Service.services.exceptions.ResourceNotFoundException;
 import com.project.lana.course.entities.User;
 import com.project.lana.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.file.ReadOnlyFileSystemException;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +22,7 @@ public class UserService {
 
     public User findById(Long id) {
        Optional<User> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(()-> new ResourceNotFoundException(id));
     }
 
     public User insert (User obj){
