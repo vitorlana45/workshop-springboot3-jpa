@@ -1,14 +1,13 @@
 package com.project.lana.course.entities;
 
 
-
-import com.project.lana.course.repositories.CategoryRepository;
-import com.project.lana.course.resources.CategoryResource;
 import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_category")
@@ -20,7 +19,10 @@ public class Category implements Serializable {
     private Long id;
     private String name;
 
-    public Category (){
+    @Transient
+    private Set<Product> products = new HashSet<>();
+
+    public Category() {
         //O JPA precisa de um construtor padrao para que o framework possa
         //instanciá-la corretamente "Obtive erros por conta deste esquecimento :D"
     }
@@ -46,6 +48,11 @@ public class Category implements Serializable {
         this.name = name;
     }
 
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,4 +64,6 @@ public class Category implements Serializable {
     public int hashCode() {
         return Objects.hash(getId());
     }
+
+
 }
